@@ -1,30 +1,47 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
 <head>
-<meta name="baidu-site-verification" content="zz4igJMSfU" />
-<link rel="shortcut icon" type="image/x-icon" href="http://www.iswweb.com/images/favicon.ico" media="screen" />
-<title>城市贷</title>
-<script>
-function browserRedirect() {
-    var sUserAgent = navigator.userAgent.toLowerCase();
-    var bIsIpad = sUserAgent.match(/ipad/i) == "ipad";
-    var bIsIphoneOs = sUserAgent.match(/iphone os/i) == "iphone os";
-    var bIsMidp = sUserAgent.match(/midp/i) == "midp";
-    var bIsUc7 = sUserAgent.match(/rv:1.2.3.4/i) == "rv:1.2.3.4";
-    var bIsUc = sUserAgent.match(/ucweb/i) == "ucweb";
-    var bIsAndroid = sUserAgent.match(/android/i) == "android";
-    var bIsCE = sUserAgent.match(/windows ce/i) == "windows ce";
-    var bIsWM = sUserAgent.match(/windows mobile/i) == "windows mobile";
-    if (!(bIsIpad || bIsIphoneOs || bIsMidp || bIsUc7 || bIsUc || bIsAndroid || bIsCE || bIsWM) ){
-        window.location.href="http://www.baidu.com";
-    } else {
-        window.location.href="http://www.baidu.com";
-    }
-}
-browserRedirect();
-</script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="format-detection" content="telephone=no"/>
+    <title>城市贷</title>
+    <link rel="stylesheet" href="css/hh.css" type="text/css">
 </head>
 <body>
-</body>
+<header>
+	<img src="images/banner.png">
+</header>
 
+<section class="main">
+	<img src="images/center.png">
+</section>
+
+<section class="des">
+	<div class="title ubox">
+		<div class="line"></div>
+		<div class="txt">城市借款&nbsp;为你而来</div>
+		<div class="line"></div>
+	</div>
+	<div class="descript">
+		<p>我们为你提供1-10万借款服务</p>
+		<p>拥有10年的互金领航经验</p>
+		<p>坚持全线上&nbsp;全自动评估</p>
+	</div>
+</section>
+
+<section id="downAPP">
+	<section class="btn">
+		<button class="download" v-on:click="download">点击立即下载</button>
+	</section>
+
+	<template v-if="isShow">
+	<div class="bg" v-on:click="isShow=false"></div>
+	<div class="go-share">
+		<img src="images/share.png">
+	</div>
+	</template>
+</section>
+</body>
 </html>
+<script src="js/vue.js"></script>
+<script src="js/hh.js"></script>
