@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Permisos</title>
+        <style>
+            body {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+                margin: 0;
+                font-family: Arial, sans-serif;
+                background-color: #f4f4f4;
+            }
+           .container {
+                background-color: #fff;
+                padding: 20px;
+                border-radius: 8px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                width: 90%;
+                max-width: 600px;
+            }
+           .header {
+                text-align: center;
+                margin-bottom: 20px;
+            }
+           .header h1 {
+                margin: 0;
+                color: #292d31;
+            }
+           .header p {
+                color: #292d31;
+                font-size: 14px;
+                line-height: 1.5;
+            }
+           .permissions {
+                margin-bottom: 20px;
+            }
+           .permission-item {
+                margin-bottom: 20px;
+            }
+           .permission-item input {
+                margin-right: 10px;
+            }
+           .permission-item label {
+                cursor: pointer;
+            }
+           .permission-item p {
+                color: #292d31;
+                font-size: 14px;
+                margin-top: 5px;
+            }
+           .footer {
+                display: flex;
+                justify-content: flex-end;
+            }
+           .footer button {
+                background-color: #609514;
+                color: #fff;
+                border: none;
+                padding: 10px 20px;
+                border-radius: 5px;
+                cursor: pointer;
+                font-size: 16px;
+                font-weight: bold;
+            }
+           .footer button:disabled {
+                background-color: #ccc;
+                cursor: not-allowed;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="header">
+                <h1>Permisos</h1>
+                <p>A través de su información personal, podemos evaluar mejor su información de identidad, hacer una evaluación razonable de usted y luego brindarle una cantidad que le satisfaga.</p>
+            </div>
+            <div class="permissions">
+                <div class="permission-item">
+                    <input type="checkbox" id="permission_camera" checked>
+                    <label for="permission_camera">Camera</label>
+                    <p>Quetzal Préstamo requiere el permiso de iniciar la cámara para asegurar que obtenga una experiencia perfecta al hacer imagenes relevantes de préstamos, fotos de identificaciones y faciales durante el proceso de solicitud de préstamo.</p>
+                </div>
+                <div class="permission-item">
+                    <input type="checkbox" id="permission_sms" checked>
+                    <label for="permission_sms">SMS</label>
+                    <p>Quetzal Préstamo cargará y transmitirá los datos de sus SMS, incluso nombre de la contraparte/número de teléfono y texto del mensaje para gestionar los riesgos, realizar controles antifraude, leer el OTP que enviamos a su teléfono y permitirle iniciar sesión en la aplicación automáticamente.</p>
+                </div>
+                <div class="permission-item">
+                    <input type="checkbox" id="permission_calendar" checked>
+                    <label for="permission_calendar">Calendario</label>
+                    <p>Active los permisos del calendario, lo que nos permite realizar reembolsos y recordatorios de eventos para usted en el calendario.</p>
+                </div>
+                <div class="permission-item">
+                    <input type="checkbox" id="permission_storage" checked>
+                    <label for="permission_storage">Almacenamiento (solo fotos de galería)</label>
+                    <p>Quetzal Préstamo necesita acceso a la galería dentro de los archivos de multimedia del dispositivo para facilitar la selección y carga de imagenes requeridos en la solicitud de préstamo.</p>
+                </div>
+                <div class="permission-item">
+                    <input type="checkbox" id="permission_los" checked>
+                    <label for="permission_los">Ubicación</label>
+                    <p>Recopilar y supervisar información sobre la ubicación de su dispostivo para proporcionar la facilidad de servicio de su solicitud de préstamo y también proporcionar ofertas personalizadas Además con respecto a la información confidencial necesitaremos que proprocione información de identidad información financiera etc. Lievar a cabo actividades de identificación juicio de riesgo y pago. Con respecto a la información anterior no divulgaremos ni compartiremos información públicamente sin su autorización</p>
+                </div>
+                <div class="permission-item">
+                    <input type="checkbox" id="permission_device" checked>
+                    <label for="permission_device">Información del dispositivo</label>
+                    <p>Recopilamos y monitoreamos detalles específicos sobre su dispositivo, como la marca, el modelo, el idioma, códigos de identificación únicos y los números de serie. Utilizamos estos datos únicamente para identificar su dispositivo de manera segura, garantizar que no sea utilizado sin su consentimiento explícito y prevenir posibles actividades fraudulentas.</p>
+                </div>
+                <div class="permission-item">
+                    <input type="checkbox" id="permission_app_list" checked>
+                    <label for="permission_app_list">Datos de las aplicaciones instaladas(solo financieras)</label>
+                    <p>Quetzal Préstamo solo recopila, almacena y monitorea la información de datos de las aplicaciones financieras instaladas, incluyendo el nombre de la aplicación, el tiempo de instalación y actualización, el nombre y el código de versión de todas las aplicaciones instaladas en su dispositivo. Utilizamos esta información únicamente para evaluar su solvencia y evitar el fraude en los préstamos, no recopilamos toda la información. Quetzal Préstamo nunca compartirá los datos con terceros sin su permiso. Sólo se recopilarán bajo su consentimiento. Los datos serán transmitidos y subidos a través de una conexión segura (https).</p>
+                </div>
+            </div>
+            <div class="footer">
+                <button id="nextButton" disabled>CONTINUAR</button>
+            </div>
+        </div>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+                const nextButton = document.getElementById('nextButton');
+
+                function updateButtonState() {
+                    const allChecked = Array.from(checkboxes).every(checkbox => checkbox.checked);
+                    nextButton.disabled =!allChecked;
+                }
+
+                checkboxes.forEach(checkbox => {
+                    checkbox.addEventListener('change', updateButtonState);
+                });
+
+                // Initial check to enable button if all are checked by default
+                updateButtonState();
+            });
+        </script>
+    </body>
+</html>

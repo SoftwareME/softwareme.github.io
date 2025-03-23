@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Declaración de permisos de XXX</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+        }
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 600px;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .header h1 {
+            margin: 0;
+            color: #292d31;
+        }
+        .header p {
+            color: #292d31;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        .permissions {
+            margin-bottom: 20px;
+        }
+        .permission-item {
+            margin-bottom: 20px;
+        }
+        .permission-item input {
+            margin-right: 10px;
+        }
+        .permission-item label {
+            cursor: pointer;
+            font-weight: bold;
+        }
+        .permission-item p {
+            color: #292d31;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+        .footer {
+            display: flex;
+            justify-content: flex-end;
+        }
+        .footer button {
+            background-color: #609514;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+        }
+        .footer button:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Declaración de permisos de XXX</h1>
+            <p>A través de su información personal, podemos evaluar mejor su identidad, realizar un análisis de riesgo responsable y ofrecerle un monto que se adapte a sus necesidades.</p>
+        </div>
+        <div class="permissions">
+            <div class="permission-item">
+                <input type="checkbox" id="permission_camera" checked>
+                <label for="permission_camera">Cámara</label>
+                <p>XXX solicita el permiso de acceso a la cámara exclusivamente para:</p>
+                <p>- Capturar imágenes de documentos oficiales de identificación.</p>
+                <p>- Verificar su rostro en el proceso de autenticación.</p>
+                <p>- Procesar su solicitud de préstamo de manera segura.</p>
+            </div>
+            <div class="permission-item">
+                <input type="checkbox" id="permission_sms" checked>
+                <label for="permission_sms">Mensajes de texto (SMS)</label>
+                <p>Solo accedemos a los siguientes datos de SMS:</p>
+                <p>- Códigos OTP enviados por XXX para iniciar sesión.</p>
+                <p>No leemos ni almacenamos mensajes de terceros.</p>
+            </div>
+            <div class="permission-item">
+                <input type="checkbox" id="permission_calendar" checked>
+                <label for="permission_calendar">Calendario</label>
+                <p>Permita el acceso a su calendario para:</p>
+                <p>- Programar recordatorios de pagos.</p>
+                <p>- Notificar fechas importantes relacionadas con su préstamo.</p>
+            </div>
+            <div class="permission-item">
+                <input type="checkbox" id="permission_storage" checked>
+                <label for="permission_storage">Almacenamiento (solo galería)</label>
+                <p>Accedemos a su galería para:</p>
+                <p>- Seleccionar imágenes de documentos requeridos (ej: INE, comprobante de domicilio).</p>
+                <p>No accedemos a archivos ni carpetas privadas.</p>
+            </div>
+            <div class="permission-item">
+                <input type="checkbox" id="permission_los" checked>
+                <label for="permission_los">Ubicación</label>
+                <p>Recopilamos su ubicación para:</p>
+                <p>- Optimizar la cobertura de nuestro servicio.</p>
+                <p>- Verificar la seguridad de transacciones.</p>
+                <p>Puede desactivar este permiso en cualquier momento desde la configuración del teléfono.</p>
+            </div>
+            <div class="permission-item">
+                <input type="checkbox" id="permission_device" checked>
+                <label for="permission_device">Información del dispositivo</label>
+                <p>Monitoreamos detalles técnicos (marca, modelo, sistema operativo) para:</p>
+                <p>- Detectar uso no autorizado.</p>
+                <p>- Prevenir actividades fraudulentas.</p>
+            </div>
+            <div class="permission-item">
+                <input type="checkbox" id="permission_app_list" checked>
+                <label for="permission_app_list">Aplicaciones instaladas (solo financieras)</label>
+                <p>Solo recopilamos datos de aplicaciones financieras como:</p>
+                <p>- Nombre de la aplicación.</p>
+                <p>- Fecha de instalación y actualización.</p>
+                <p>- Versión del software.</p>
+                <p>Utilizamos esta información para evaluar su perfil crediticio y evitar el fraude.</p>
+            </div>
+            <div class="permission-item">
+                <label for="permission_privacy">Política de privacidad</label>
+                <p>Seguridad: Todos los datos se transmiten vía HTTPS y se almacenan en servidores protegidos.</p>
+                <p>Control: Usted puede revocar permisos en cualquier momento desde la configuración del dispositivo.</p>
+                <p>No compartimos: No divulgamos sus datos sin su consentimiento explícito, salvo por requerimiento legal.</p>
+            </div>
+        </div>
+        <div class="footer">
+            <button id="nextButton" disabled>CONTINUAR</button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+            const nextButton = document.getElementById('nextButton');
+
+            function updateButtonState() {
+                const allChecked = Array.from(checkboxes).every(checkbox => checkbox.checked);
+                nextButton.disabled = !allChecked;
+            }
+
+            checkboxes.forEach(checkbox => {
+                checkbox.addEventListener('change', updateButtonState);
+            });
+
+            // Initial check to enable button if all are checked by default
+            updateButtonState();
+        });
+    </script>
+</body>
+</html>
